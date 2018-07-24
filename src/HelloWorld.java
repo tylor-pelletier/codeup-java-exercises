@@ -3,7 +3,7 @@ public class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         int myFavoriteNumber = 10;
-        System.out.println("My favorite number is: " + myFavoriteNumber);
+        System.out.println("My favorite number is:" + " " + myFavoriteNumber);
         String myString = "Ten";
         System.out.println(myString);
         double myNumber = 3.14;
@@ -43,7 +43,7 @@ public class HelloWorld {
         long continentPop = 400300200100L;
 //        Use doubles instead of floats. If you need to use floats, add an F at the end of the number
         float price = 79.85F;
-        System.out.println("Total: " + (price + 1.0F));
+        System.out.println("Total:" + " " + (price + 1.0F));
         double grade = 98.60;
         char letter = 'T';
         boolean trueOrFalse = true;
@@ -52,8 +52,8 @@ public class HelloWorld {
 
 //        Implicit Casting
         double morePrecise = statePop;
-        System.out.println("State Population: " + statePop);
-        System.out.println("Percise State Population: " + morePrecise);
+        System.out.println("State Population:" + " " + statePop);
+        System.out.println("Percise State Population:" + " " + morePrecise);
 
 //        Explicit Casting
 //        Truncates the number. Doesn't round
@@ -68,6 +68,8 @@ public class HelloWorld {
         System.out.println(trueOrFalse);
         System.out.println(pages);
 
+
+////////////////////////////////////////////        NOTES
 
 //        Declaration:
 //        type variableName;
