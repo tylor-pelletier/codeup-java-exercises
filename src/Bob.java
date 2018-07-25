@@ -16,7 +16,9 @@ public class Bob {
             int exclamationMark = sentence.indexOf('!');
             String empty = "";
 
-            if (questionMark > -1) {
+            if (j == 4) {
+                System.out.println("Bob: \'I'm done talking with you.\'");
+            } else if (questionMark > -1) {
                 System.out.println("Bob: \'Sure.\'");
                 j += 1;
             } else if (exclamationMark > -1) {
@@ -25,8 +27,6 @@ public class Bob {
             } else if (sentence.equals(empty)) {
                 System.out.println("Bob: \'Fine! Be that way!\'");
                 j += 1;
-            } else if (j == 5) {
-                System.out.println("Bob: \'I'm done talking with you.\'");
             } else {
                 System.out.println("Bob: \'Whatever.\'");
                 j += 1;
