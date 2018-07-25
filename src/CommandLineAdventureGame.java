@@ -49,9 +49,9 @@ public class CommandLineAdventureGame {
 
                         if (goUp) {
                             System.out.println("You start walking up the mountain");
-                            System.out.print("You chop down some wood for the fire \n" +
-                                    "\\\\Wood added to inventory\\\\ \n" +
-                                    "You get to the top and see some smoke off in the distance... \n");
+                            System.out.print("You chop down some wood for the fire");
+                            System.out.println("\\\\Wood added to inventory\\\\");
+                            System.out.println("You get to the top and see some smoke off in the distance...");
 
                             int h = 0;
                             for (int g = 0; g <= h; g += 1) {
@@ -71,9 +71,15 @@ public class CommandLineAdventureGame {
                                     System.out.println("Game in progress. End game");
 
                                 } else if (goHomeWithWood) {
-                                    System.out.print("You start walking down the mountain \n" +
-                                            "You make it home and add the wood to the pile \n" +
-                                            "\\\\Wood removed from inventory\\\\ \n");
+                                    System.out.print("You start walking down the mountain");
+                                    if (f == 1) {
+                                        System.out.println("You make it home and add the wood to the pile and water to the reservoir");
+                                        System.out.println("\\\\Wood removed from inventory\\\\");
+                                        System.out.println("\\\\Water removed from inventory\\\\");
+                                    } else {
+                                        System.out.println("You make it home and add the wood to the pile");
+                                        System.out.println("\\\\Wood removed from inventory\\\\");
+                                    }
                                     b += 1;
 
                                 } else {
@@ -86,8 +92,8 @@ public class CommandLineAdventureGame {
 
                         } else if (goDown) {
                             System.out.println("You start walking down the mountain");
-                            System.out.println("You find a stream at the bottom of the mountain \n" +
-                                    "\\\\Water added to inventory\\\\");
+                            System.out.println("You find a stream at the bottom of the mountain");
+                            System.out.println("\\\\Water added to inventory\\\\");
 
                             int j = 0;
                             for (int i = 0; i <= j; i += 1) {
@@ -102,9 +108,9 @@ public class CommandLineAdventureGame {
                                     f += 1;
 
                                 } else if (goHome) {
-                                    System.out.println("You start walking home \n" +
-                                            "You make it home and fill up your reservoir with water \n" +
-                                            "\\\\Water removed from inventory\\\\ \n");
+                                    System.out.println("You start walking home");
+                                    System.out.println("You make it home and fill up your reservoir with water");
+                                    System.out.println("\\\\Water removed from inventory\\\\");
                                     b += 1;
 
                                 } else {
@@ -125,7 +131,8 @@ public class CommandLineAdventureGame {
                 }
 
             } else if (exploreCave) {
-                System.out.println("You walk to the cave \nYou are walking inside the cave");
+                System.out.println("You walk to the cave");
+                System.out.println("You are walking inside the cave");
 
                 int y = 0;
                 for (int z = 0; z <= y; z += 1) {
@@ -182,9 +189,9 @@ public class CommandLineAdventureGame {
 
                             } else if (goLeft) {
                                 System.out.println("You are walking down the tunnel to the left");
-                                System.out.print("The tunnel leads to a dead end with some writing on the wall \n" +
-                                        "The words are smudged and hard to read \n" +
-                                        "There are some sharp rocks on the ground that would work well for hunting arrows \n");
+                                System.out.print("The tunnel leads to a dead end with some writing on the wall");
+                                System.out.println("The words are smudged and hard to read");
+                                System.out.println("There are some sharp rocks on the ground that would work well for hunting arrows");
                                 System.out.println("\\\\Sharp rocks added to inventory\\\\");
 
                                 int q = 0;
