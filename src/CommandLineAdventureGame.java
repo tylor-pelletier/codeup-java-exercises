@@ -18,6 +18,12 @@ public class CommandLineAdventureGame {
                 "family had a secure bunker in the mountain. You are inside this bunker, but you need more resources...");
         System.out.println(" ");
 
+        int wood = 0;
+        int rocks = 0;
+        int water = 0;
+        int food = 0;
+        int arrows = 0;
+
         int b = 0;
         for (int a = 0; a <= b; a += 1) {
 
