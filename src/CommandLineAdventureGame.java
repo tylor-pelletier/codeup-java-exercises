@@ -64,13 +64,17 @@ public class CommandLineAdventureGame {
 
 
                                 if (checkoutSmoke) {
+                                    System.out.println("You start heading towards the smoke");
+                                    System.out.println("You hear cracking of branches and leaves to your right");
+                                    System.out.println("Out of the woods comes a rabid mountain lion, worn from radiation");
+                                    System.out.println("It starts heading straight for you");
                                     System.out.println("Game in progress. End game");
 
                                 } else if (goHomeWithWood) {
                                     System.out.print("You start walking down the mountain \n" +
                                             "You make it home and add the wood to the pile \n" +
-                                            "\\\\Wood removed from inventory\\\\ \n" +
-                                            "You have completed your task. End game");
+                                            "\\\\Wood removed from inventory\\\\ \n");
+                                    b += 1;
 
                                 } else {
                                     System.out.println("That isn't and option");
@@ -100,8 +104,8 @@ public class CommandLineAdventureGame {
                                 } else if (goHome) {
                                     System.out.println("You start walking home \n" +
                                             "You make it home and fill up your reservoir with water \n" +
-                                            "\\\\Water removed from inventory\\\\ \n" +
-                                            "You have completed your task. End Game");
+                                            "\\\\Water removed from inventory\\\\ \n");
+                                    b += 1;
 
                                 } else {
                                     System.out.println("That isn't and option");
@@ -197,7 +201,8 @@ public class CommandLineAdventureGame {
                                         System.out.println("You walk out of the cave and head home");
                                         System.out.println("You reach your home and use some branches from your pile to make arrows");
                                         System.out.println("\\\\Sharp rocks removed from inventory\\\\");
-                                        System.out.println("You have completed your task. End game");
+                                        System.out.println("\\\\Arrows added to your inventory\\\\");
+                                        b += 1;
 
                                     } else if (right) {
                                         u += 1;
