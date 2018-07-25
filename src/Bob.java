@@ -12,19 +12,16 @@ public class Bob {
             System.out.print("Enter something to say to Bob: ");
 
             String sentence = sc.nextLine();
-            int questionMark = sentence.indexOf('?');
-            int exclamationMark = sentence.indexOf('!');
-            String empty = "";
 
             if (j == 4) {
                 System.out.println("Bob: \'I'm done talking with you.\'");
-            } else if (questionMark > -1) {
+            } else if (sentence.endsWith("?")) {
                 System.out.println("Bob: \'Sure.\'");
                 j += 1;
-            } else if (exclamationMark > -1) {
+            } else if (sentence.endsWith("!") || sentence.toUpperCase().equals(sentence) && !sentence.isEmpty()) {
                 System.out.println("Bob: \'Woah, chill out!\' ");
                 j += 1;
-            } else if (sentence.equals(empty)) {
+            } else if (sentence.isEmpty()) {
                 System.out.println("Bob: \'Fine! Be that way!\'");
                 j += 1;
             } else {
