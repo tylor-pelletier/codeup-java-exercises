@@ -27,26 +27,10 @@ public class HighLow {
 
             if (guess == randomNumber) {
                 System.out.println("GOOD GUESS! YOU WIN!");
+                newGame();
 
             } else if (j == 10) {
-                int z = 0;
-                for (int y = 0; y <= z; y += 1) {
-                    System.out.print("You are out of guesses, do you want to play again? [y/n]: ");
-                    String playAgain = sc.next();
-
-                    if (playAgain.equals("y")) {
-                        startGame();
-
-                    } else if (playAgain.equals("n")) {
-                        return;
-
-                    } else {
-                        System.out.println("Invalid input, try again");
-                        z += 1;
-
-                    }
-
-                }
+                newGame();
 
             } else if (guess < randomNumber) {
                 System.out.println("HIGHER");
@@ -59,6 +43,29 @@ public class HighLow {
             } else {
                 System.out.println("Invalid input, try again");
                 j += 1;
+
+            }
+
+        }
+
+    }
+
+    public static void newGame() {
+
+        int z = 0;
+        for (int y = 0; y <= z; y += 1) {
+            System.out.print("You are out of guesses, do you want to play again? [y/n]: ");
+            String playAgain = sc.next();
+
+            if (playAgain.equals("y")) {
+                startGame();
+
+            } else if (playAgain.equals("n")) {
+                return;
+
+            } else {
+                System.out.println("Invalid input, try again");
+                z += 1;
 
             }
 
