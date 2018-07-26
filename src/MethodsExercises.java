@@ -109,10 +109,13 @@ public class MethodsExercises {
                 String rollAgain = sc.next();
                 if (rollAgain.equals("y")) {
                     j += 1;
+
                 } else if (rollAgain.equals("n")) {
                     return;
+
                 } else {
                     System.out.println("Invalid input, try again");
+
                 }
 
             } else {
@@ -154,60 +157,92 @@ public class MethodsExercises {
 //
 ////    If your main is static, the methods need to be static
 ////    It cares about what you return. If it isn't returning what is placed after public, it won't work
+//
 //    public static boolean isOne(int number) {
+//
 //        return number == 1;
+//
 //    }
+//
 //    public static int addOne(int number) {
+//
 //        return number += 1;
+//
 //    }
+//
 //    public static String shout(String message) {
+//
 //        return message.toUpperCase();
+//
 //    }
 //
 ////    Void doesn't care what you return
 //    public static void sayHello(String name) {
+//
 //        System.out.println("Hello, " + name + "!");
+//
 //    }
 //
 ////    Overloading
 //    public static void sayHello(int times) {
+//
 //        for (int i = 0; i < times; i += 1) {
 //            sayHello();
+//
 //        }
+//
 //    }
 //    public static void sayHello() {
+//
 //        System.out.println("Hello, World!");
+//
 //    }
+//
 //    public static void sayHello(String greeting, String name) {
+//
 //        System.out.println(greeting + " " + name);
+//
 //    }
 //
 //    public static boolean isOne(String stringNumber) {
+//
 //        return stringNumber.equals("1");
+//
 //    }
 //
 ////    You can put method return values in variables
 //    public static int add(int number1, int number2) {
+//
 //        return number1 + number2;
+//
 //    }
+//
 //    public static int subtract(int number3, int number4) {
+//
 //        return number3 - number4;
+//
 //    }
 //
 ////    For Loop
 //    public static void count() {
+//
 //        for (int i = 5; i > 0; i -= 1) {
 //            System.out.println(i);
 //        }
+//
 //    }
 ////    Recusion
 //    public static void count(int n) {
+//
 //        if(n <= 0) {
 //            System.out.println("Finished");
 //            return;
+//
 //        }
+//
 //        System.out.println(n);
 //        count(n - 1);
+//
 //    }
 
 }
