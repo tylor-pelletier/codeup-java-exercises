@@ -11,7 +11,7 @@ public class Hangman {
     static String hardWord;
     static String player1Word;
     static String player2Guess;
-    static int numberOfGuesses = 9;
+    static int numberOfGuesses;
     static ArrayList<String> player2WordArr = new ArrayList<String>();
     static ArrayList<String> player1WordArr = new ArrayList<String>();
 
@@ -25,11 +25,15 @@ public class Hangman {
 
     public static void startGame() {
 
+        numberOfGuesses = 9;
+
         selectDifficulty();
 
 //        System.out.println("Player 1: Enter a word");
 
 //        player1Word = sc.next().toLowerCase();
+
+//        player2WordArr.CLEAR                                                    // CLEAR THE ARRAY TO START A NEW GAME
 
         for (int i = 0; i < player1Word.length(); i += 1) {
 
