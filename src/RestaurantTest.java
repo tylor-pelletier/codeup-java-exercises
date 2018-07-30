@@ -9,11 +9,17 @@ public class RestaurantTest {
 //
 //        System.out.println("The dish costs " + dish.costInCents + " cents.");
 //        System.out.println(dish.nameOfDish + " is the name of the dish.");
+//
 //        if (dish.wouldRecommend) {
+//
 //            System.out.println("I would recommend this dish!");
+//
 //        } else {
+//
 //            System.out.println("I would not recommend this dish.");
+//
 //        }
+//
 //        System.out.println(dish.eat());
 
         RestaurantDish dish = new RestaurantDish(1395, "Chicken Parm", false);
@@ -26,11 +32,17 @@ public class RestaurantTest {
         // GET NEW VARIABLES
         System.out.println("The cost of this dish is " + dish.getCostInCents() + " cents.");
         System.out.println(dish.getNameOfDish() + " is the name of this dish.");
+
         if (dish.isWouldRecommend()) {
+
             System.out.println("I would recommend this dish!");
+
         } else {
+
             System.out.println("I would not recommend this dish.");
+
         }
+
         System.out.println(dish.eat());
 
     }

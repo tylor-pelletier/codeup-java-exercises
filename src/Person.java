@@ -39,17 +39,23 @@ public class Person {
 
 //    returns the person's name
     public void setName(String name) {
+
         this.name = name;
+
     }
 
 //    changes the name property to the passed value
     public String getName() {
+
         return name;
+
     }
 
 //    prints a message to the console using the person's name
     public void sayHello() {
+
         System.out.println("Hello, " + name + "!");
+
     }
 
 }

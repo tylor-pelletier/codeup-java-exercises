@@ -14,15 +14,22 @@ public class Input {
 
     public boolean yesNo() {
 
+        System.out.println("[yes/no]");
+
         String input = sc.next();
 
-        if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("yeah")) {
+        if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("confirm")) {
 
             return true;
 
-        } else {
+        } else if (input.equalsIgnoreCase("n") || input.equalsIgnoreCase("no") || input.equalsIgnoreCase("deny")) {
 
             return false;
+
+        } else {
+
+            System.out.println("Invalid input, try again");
+            return yesNo();
 
         }
 
@@ -35,10 +42,14 @@ public class Input {
         int input = sc.nextInt();
 
         if (input > min && input < max) {
+
             return input;
+
         } else {
+
             System.out.println("Invalid input, try again");
             return getInt(min, max);
+
         }
 
     }
@@ -56,10 +67,14 @@ public class Input {
         double input = sc.nextDouble();
 
         if (input > min && input < max) {
+
             return input;
+
         } else {
+
             System.out.println("Invalid input, try again");
             return getDouble(min, max);
+
         }
 
     }
