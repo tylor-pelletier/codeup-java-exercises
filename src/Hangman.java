@@ -5,6 +5,10 @@ public class Hangman {
 
     static Scanner sc = new Scanner(System.in);
 
+    static String difficulty;
+    static String easyWord;
+    static String mediumWord;
+    static String hardWord;
     static String player1Word;
     static String player2Guess;
     static int numberOfGuesses = 9;
@@ -23,9 +27,9 @@ public class Hangman {
 
         selectDifficulty();
 
-        System.out.println("Player 1: Enter a word");
+//        System.out.println("Player 1: Enter a word");
 
-        player1Word = sc.next().toLowerCase();               // CREATE MULTIPLE DIFFICULTY ARRAYS TO RANDOMLY GET A WORD
+//        player1Word = sc.next().toLowerCase();
 
         for (int i = 0; i < player1Word.length(); i += 1) {
 
@@ -51,9 +55,58 @@ public class Hangman {
 
     }
 
+    public static void selectDifficulty() {
+
+        System.out.println("--------- Hangman ----------");
+        System.out.println("|       |          |       |");
+        System.out.println("| Easy  |  Medium  |  Hard |");
+        System.out.println("----------------------------");
+
+        difficultyOptions();
+
+    }
+
+    public static void difficultyOptions() {
+
+        difficulty = sc.nextLine();
+
+        if (difficulty.toLowerCase().equals("easy")) {
+
+            String[] easyWords = {"arm", "back", "ears", "eyes", "face", "feet", "fingers", "foot", "hair", "hands", "head", "knees", "legs", "mouth", "neck", "nose", "shoulders", "skin", "stomach", "teeth", "thumbs", "toes", "tongue", "tooth", "black", "blue", "brown", "gray", "green", "orange", "pink", "purple", "red", "white", "yellow", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+
+            easyWord = easyWords[(int) (Math.random() * easyWords.length)];
+
+            player1Word = easyWord;
+
+        } else if (difficulty.toLowerCase().equals("medium")) {
+
+            String[] mediumWords = {"close", "click", "copy", "cut", "command", "database", "delete", "digital", "file", "find", "font", "format", "graphic", "icon", "hardware", "input", "interactive", "Internet", "keyboard", "help", "memory", "menu", "modem", "mouse", "multimedia", "network", "numeric", "open", "output", "paste", "peripheral", "printer", "processing", "replace", "save", "scanner", "search", "select", "software", "text", "advantage", "advertisement", "advice", "agenda", "apology", "authorization", "bill", "brand", "budget", "commission", "comparison", "competition", "competitor", "confirmation", "costs", "creditor", "customer", "deadline", "debt", "debtor", "decision", "decrease", "deficit", "delivery", "department", "description", "difference", "disadvantage", "distribution", "employee", "employer", "enquiry", "environment", "equipment", "estimate", "experience", "explanation", "facilities", "factory", "feedback", "goal", "goods", "growth", "guarantee", "improvement", "increase", "industry", "instructions", "interest", "inventory", "invoice", "knowledge", "limit", "loss", "margin", "market", "message", "mistake", "objective", "offer", "opinion", "option", "order", "output", "payment", "penalty", "permission", "possibility", "product", "production", "profit", "promotion", "purchase", "reduction", "refund", "reminder", "repairs", "report", "responsibility", "result", "retailer", "rise", "risk", "salary", "sales", "schedule", "share", "signature", "stock", "success", "suggestion", "supply", "support", "target", "transport", "turnover", "wholesaler"};
+
+            mediumWord = mediumWords[(int) (Math.random() * mediumWords.length)];
+
+            player1Word = mediumWord;
+
+        } else if (difficulty.toLowerCase().equals("hard")) {
+
+            String[] hardWords = {"awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid", "fishhook", "fjord", "gazebo", "gypsy", "haiku", "haphazard", "hyphen", "ivory", "jazzy", "jiffy", "jinx", "jukebox", "kayak", "kiosk", "klutz", "labradorite", "memento", "mystify", "numbskull", "ostracize", "oxygen", "pajama", "phlegm", "pixel", "polka", "quad", "quip", "rhythmic", "rogue", "sphinx", "squawk", "swivel", "toady", "twelfth", "unzip", "waxy", "wildebeest", "yacht", "zealous", "zigzag", "zippy", "zombie"};
+
+            hardWord = hardWords[(int) (Math.random() * hardWords.length)];
+
+            player1Word = hardWord;
+
+        } else {
+
+            System.out.println("Invalid input, try again");
+
+            difficultyOptions();
+
+        }
+
+    }
+
     public static void player2Guess() {
 
-        player2Guess = sc.next().toLowerCase();
+        player2Guess = sc.nextLine().toLowerCase();
 
         if (player2Guess.matches("[a-z]{1}") || player2Guess.equals(player1Word)) {
 
@@ -93,7 +146,7 @@ public class Hangman {
 
             convertArrToStr();
 
-            minusAGuess();
+            player2Guess();
 
         } else if (!player1Word.contains(player2Guess)) {
 
@@ -165,15 +218,6 @@ public class Hangman {
         }
 
         System.out.println(" ");
-
-    }
-
-    public static void selectDifficulty() {
-
-        System.out.println("--------- Hangman ----------");
-        System.out.println("|       |          |       |");
-        System.out.println("| Easy  |  Medium  |  Hard |");
-        System.out.println("----------------------------");
 
     }
 
