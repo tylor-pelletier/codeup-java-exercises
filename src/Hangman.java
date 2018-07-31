@@ -14,6 +14,9 @@ public class Hangman {
     static int numberOfGuesses;
     static ArrayList<String> player2WordArr = new ArrayList<String>();
     static ArrayList<String> player1WordArr = new ArrayList<String>();
+    static String playAgain;
+    static int wins;
+    static int loses;
 
 
     public static void main(String[] args) {
@@ -25,15 +28,14 @@ public class Hangman {
 
     public static void startGame() {
 
-        numberOfGuesses = 9;
-
         selectDifficulty();
 
 //        System.out.println("Player 1: Enter a word");
 
 //        player1Word = sc.next().toLowerCase();
 
-//        player2WordArr.CLEAR                                                    // CLEAR THE ARRAY TO START A NEW GAME
+        player1WordArr.removeAll(player1WordArr);
+        player2WordArr.removeAll(player2WordArr);
 
         for (int i = 0; i < player1Word.length(); i += 1) {
 
@@ -55,6 +57,8 @@ public class Hangman {
 
         }
 
+        sc.nextLine();
+
         player2Guess();
 
     }
@@ -66,23 +70,29 @@ public class Hangman {
         System.out.println("| Easy  |  Medium  |  Hard |");
         System.out.println("----------------------------");
 
+        System.out.print("Enter a difficulty: ");
+
         difficultyOptions();
 
     }
 
     public static void difficultyOptions() {
 
-        difficulty = sc.nextLine();
+        difficulty = sc.next().toLowerCase();
 
-        if (difficulty.toLowerCase().equals("easy")) {
+        if (difficulty.equals("easy")) {
 
-            String[] easyWords = {"arm", "back", "ears", "eyes", "face", "feet", "fingers", "foot", "hair", "hands", "head", "knees", "legs", "mouth", "neck", "nose", "shoulders", "skin", "stomach", "teeth", "thumbs", "toes", "tongue", "tooth", "black", "blue", "brown", "gray", "green", "orange", "pink", "purple", "red", "white", "yellow", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+            numberOfGuesses = 15;
+
+            String[] easyWords = {"arms", "back", "ears", "eyes", "face", "feet", "fingers", "foot", "hair", "hands", "head", "knees", "legs", "mouth", "neck", "nose", "shoulders", "skin", "stomach", "teeth", "thumbs", "toes", "tongue", "tooth", "black", "blue", "brown", "gray", "green", "orange", "pink", "purple", "red", "white", "yellow", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
 
             easyWord = easyWords[(int) (Math.random() * easyWords.length)];
 
             player1Word = easyWord;
 
-        } else if (difficulty.toLowerCase().equals("medium")) {
+        } else if (difficulty.equals("medium")) {
+
+            numberOfGuesses = 12;
 
             String[] mediumWords = {"close", "click", "copy", "cut", "command", "database", "delete", "digital", "file", "find", "font", "format", "graphic", "icon", "hardware", "input", "interactive", "Internet", "keyboard", "help", "memory", "menu", "modem", "mouse", "multimedia", "network", "numeric", "open", "output", "paste", "peripheral", "printer", "processing", "replace", "save", "scanner", "search", "select", "software", "text", "advantage", "advertisement", "advice", "agenda", "apology", "authorization", "bill", "brand", "budget", "commission", "comparison", "competition", "competitor", "confirmation", "costs", "creditor", "customer", "deadline", "debt", "debtor", "decision", "decrease", "deficit", "delivery", "department", "description", "difference", "disadvantage", "distribution", "employee", "employer", "enquiry", "environment", "equipment", "estimate", "experience", "explanation", "facilities", "factory", "feedback", "goal", "goods", "growth", "guarantee", "improvement", "increase", "industry", "instructions", "interest", "inventory", "invoice", "knowledge", "limit", "loss", "margin", "market", "message", "mistake", "objective", "offer", "opinion", "option", "order", "output", "payment", "penalty", "permission", "possibility", "product", "production", "profit", "promotion", "purchase", "reduction", "refund", "reminder", "repairs", "report", "responsibility", "result", "retailer", "rise", "risk", "salary", "sales", "schedule", "share", "signature", "stock", "success", "suggestion", "supply", "support", "target", "transport", "turnover", "wholesaler"};
 
@@ -90,7 +100,9 @@ public class Hangman {
 
             player1Word = mediumWord;
 
-        } else if (difficulty.toLowerCase().equals("hard")) {
+        } else if (difficulty.equals("hard")) {
+
+            numberOfGuesses = 9;
 
             String[] hardWords = {"awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid", "fishhook", "fjord", "gazebo", "gypsy", "haiku", "haphazard", "hyphen", "ivory", "jazzy", "jiffy", "jinx", "jukebox", "kayak", "kiosk", "klutz", "labradorite", "memento", "mystify", "numbskull", "ostracize", "oxygen", "pajama", "phlegm", "pixel", "polka", "quad", "quip", "rhythmic", "rogue", "sphinx", "squawk", "swivel", "toady", "twelfth", "unzip", "waxy", "wildebeest", "yacht", "zealous", "zigzag", "zippy", "zombie"};
 
@@ -128,9 +140,11 @@ public class Hangman {
 
     public static void checkPlayer2Guess() {
 
-        if (player2Guess.equals(player1Word)) {
+        if (player2Guess.equals(player1Word) || player1WordArr.equals(player2WordArr)) {
 
-            System.out.println("YOU WIN!");                     // ALLOW WHEN ALL LETTERS ARE FILLED TO BE A WIN AS WELL
+            wins += 1;
+
+            System.out.println("YOU WIN!");
 
             askToPlayAgain();
 
@@ -145,6 +159,12 @@ public class Hangman {
                     player2WordArr.set(i, letter);
 
                 }
+
+            }
+
+            if (player1WordArr.equals(player2WordArr)) {
+
+                checkPlayer2Guess();
 
             }
 
@@ -168,7 +188,44 @@ public class Hangman {
 
         numberOfGuesses -= 1;
 
+        switch (numberOfGuesses) {
+
+            case 0:
+                hangman0();
+                break;
+            case 1:
+                hangman1();
+                break;
+            case 2:
+                hangman2();
+                break;
+            case 3:
+                hangman3();
+                break;
+            case 4:
+                hangman4();
+                break;
+            case 5:
+                hangman5();
+                break;
+            case 6:
+                hangman6();
+                break;
+            case 7:
+                hangman7();
+                break;
+            case 8:
+                hangman8();
+                break;
+            case 9:
+                hangman9();
+                break;
+
+        }
+
         if (numberOfGuesses == 0) {
+
+            loses += 1;
 
             System.out.println("You have run out of guesses");
             System.out.println("YOU LOSE");
@@ -177,9 +234,17 @@ public class Hangman {
 
         }
 
-        System.out.println("You have " + numberOfGuesses + " guesses left");
+        if (numberOfGuesses <= 0 && playAgain.equals("n")) {
 
-        player2Guess();
+            return;
+
+        } else {
+
+            System.out.println("You have " + numberOfGuesses + " guesses left");
+
+            player2Guess();
+
+        }
 
     }
 
@@ -187,15 +252,15 @@ public class Hangman {
 
         System.out.print("Do you want to play again? [y/n]: ");
 
-        String playAgain = sc.next();
+        playAgain = sc.next().toLowerCase();
 
-        if (playAgain.equalsIgnoreCase("y")) {
+        if (playAgain.equals("y")) {
 
             startGame();
 
-        } else if (playAgain.equalsIgnoreCase("n")){
+        } else if (playAgain.equals("n")){
 
-            return;
+            endGame();
 
         } else {
 
@@ -222,6 +287,163 @@ public class Hangman {
         }
 
         System.out.println(" ");
+
+    }
+
+    public static void endGame() {
+
+        System.out.println("You lost " + loses + " game(s)");
+        System.out.println("You won " + wins + " game(s)");
+
+    }
+
+    public static void hangman0() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==     / | \\  ");
+        System.out.println("  ==       ^     ");
+        System.out.println("  ==      / \\  ");
+        System.out.println("  ==     /   \\ ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman1() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==     / | \\  ");
+        System.out.println("  ==       ^     ");
+        System.out.println("  ==      /      ");
+        System.out.println("  ==     /       ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman2() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==     / | \\  ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman3() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==     / |     ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman4() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==       |     ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman5() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==      ( )    ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman6() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==       !     ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman7() {
+
+        System.out.println("  ==========     ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman8() {
+
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("  ==             ");
+        System.out.println("=================");
+
+    }
+
+    public static void hangman9() {
+
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("                 ");
+        System.out.println("=================");
 
     }
 
