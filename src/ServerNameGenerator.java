@@ -2,15 +2,13 @@ import java.util.Arrays;
 
 public class ServerNameGenerator {
 
+    static String[] adjectives = {"brave", "calm", "delightful", "eager", "faithful", "gentle", "happy", "jolly", "kind", "lively"};
+    static String[] nouns = {"week", "company", "system", "program", "question", "work", "government", "number", "night", "point"};
+
+    static String adjective = adjectives[(int) (Math.random() * adjectives.length)];
+    static String noun = nouns[(int) (Math.random() * nouns.length)];
+
     public static void main(String[] args) {
-
-//        EXERCISE 1
-
-        String[] adjectives = {"brave", "calm", "delightful", "eager", "faithful", "gentle", "happy", "jolly", "kind", "lively"};
-        String[] nouns = {"week", "company", "system", "program", "question", "work", "government", "number", "night", "point"};
-
-        String adjective = adjectives[(int) (Math.random() * adjectives.length)];
-        String noun = nouns[(int) (Math.random() * nouns.length)];
 
 //        System.out.println("Your random adjective is: " + adjective);
 //        System.out.println("Your random noun is: " + noun);
