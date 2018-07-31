@@ -133,14 +133,38 @@ public class MoviesApplication {
 
     public static void addMovie() {
 
-        System.out.print("Enter the title of a movie you want to add: ");
+        System.out.println("1 - animated category");
+        System.out.println("2 - drama category");
+        System.out.println("3 - horror category");
+        System.out.println("4 - scifi category");
+        System.out.print("Enter the number for the category of the new movie: ");
         sc.nextLine();
-        String newMovieName = sc.nextLine();
+        String newMovieCategory = sc.nextLine();
+
+        switch (newMovieCategory) {
+
+            case "1":
+                newMovieCategory = "animated";
+                break;
+
+            case "2":
+                newMovieCategory = "drama";
+                break;
+
+            case "3":
+                newMovieCategory = "horror";
+                break;
+
+            case "4":
+                newMovieCategory = "scifi";
+                break;
+
+        }
 
         System.out.println(" ");
 
-        System.out.print("Enter the category of the new movie: ");
-        String newMovieCategory = sc.nextLine();
+        System.out.print("Enter the title of a movie you want to add: ");
+        String newMovieName = sc.nextLine();
 
         Movie newMovie = new Movie(newMovieName, newMovieCategory);
 
