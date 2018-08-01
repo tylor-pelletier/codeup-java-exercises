@@ -28,13 +28,14 @@ public class MoviesApplication {
 
         System.out.print("Enter your choice: ");
 
-        String viewMovies = sc.next().toLowerCase();
+        String viewMovies = sc.next();
 
         System.out.println(" ");
 
         switch (viewMovies) {
 
             case "0":
+                System.out.println("Goodbye");
                 break;
 
             case "1":
