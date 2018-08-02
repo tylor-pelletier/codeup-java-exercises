@@ -4,15 +4,8 @@ public class ShapesTest {
 
     public static void main(String[] args) {
 
-        Quadrilateral myShape1 = new Rectangle();
-        Quadrilateral myShape2 = new Square();
-
-        myShape1.setLength(5.0);
-        myShape1.setWidth(10.0);
-
-
-        myShape2.setLength(2.0);
-        myShape2.setWidth(4.0);
+        Measurable myShape1 = new Rectangle(5.0, 10.0);
+        Measurable myShape2 = new Square(4.0);
 
         System.out.println("Area: " + myShape1.getArea());
         System.out.println();
@@ -24,8 +17,9 @@ public class ShapesTest {
         System.out.println();
         System.out.println("Perimeter: " + myShape2.getPerimeter());
 
-        System.out.println();
-        System.out.println("myShape1 length: " + myShape1.getLength());
+//        System.out.println();
+//        System.out.println(myShape1.getLength());
+//        System.out.println(myShape1.getWidth());
 
 ///////////////////////////////////    INHERITANCE AND POLYMORPHISM
 
