@@ -5,18 +5,22 @@ public class Hangman {
 
     static Scanner sc = new Scanner(System.in);
 
-    static String difficulty;
-    static String easyWord;
-    static String mediumWord;
-    static String hardWord;
+    static String category;
+    static String computer;
+    static String fruitAndVegetables;
+    static String transportationAndPlaces;
+    static String carParts;
+    static String animals;
     static String player1Word;
     static String player2Guess;
     static int numberOfGuesses;
     static ArrayList<String> player2WordArr = new ArrayList<String>();
     static ArrayList<String> player1WordArr = new ArrayList<String>();
+    static ArrayList<String> guesses = new ArrayList<>();
     static String playAgain;
     static int wins;
     static int loses;
+    static int end = 0;
 
 
     public static void main(String[] args) {
@@ -36,6 +40,7 @@ public class Hangman {
 
         player1WordArr.removeAll(player1WordArr);
         player2WordArr.removeAll(player2WordArr);
+        guesses.clear();
 
         for (int i = 0; i < player1Word.length(); i += 1) {
 
@@ -66,11 +71,13 @@ public class Hangman {
     public static void selectDifficulty() {
 
         System.out.println("--------- Hangman ----------");
-        System.out.println("|       |          |       |");
-        System.out.println("| Easy  |  Medium  |  Hard |");
-        System.out.println("----------------------------");
+        System.out.println("1 - Computer");
+        System.out.println("2 - Fruits & Vegetables");
+        System.out.println("3 - Tranportation & Places");
+        System.out.println("4 - Car parts");
+        System.out.println("5 - Animals");
 
-        System.out.print("Enter a difficulty: ");
+        System.out.print("Enter a category number: ");
 
         difficultyOptions();
 
@@ -78,37 +85,57 @@ public class Hangman {
 
     public static void difficultyOptions() {
 
-        difficulty = sc.next().toLowerCase();
+        category = sc.next().toLowerCase();
 
-        if (difficulty.equals("easy")) {
+        if (category.equals("1")) {
 
-            numberOfGuesses = 15;
+            numberOfGuesses = 10;
 
-            String[] easyWords = {"arms", "back", "ears", "eyes", "face", "feet", "fingers", "foot", "hair", "hands", "head", "knees", "legs", "mouth", "neck", "nose", "shoulders", "skin", "stomach", "teeth", "thumbs", "toes", "tongue", "tooth", "black", "blue", "brown", "gray", "green", "orange", "pink", "purple", "red", "white", "yellow", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+            String[] easyWords = {"close", "click", "copy", "cut", "command", "database", "delete", "digital", "file", "find", "font", "format", "graphic", "icon", "hardware", "input", "interactive", "Internet", "keyboard", "help", "memory", "menu", "modem", "mouse", "multimedia", "network", "numeric", "open", "output", "paste", "peripheral", "printer", "processing", "replace", "save", "scanner", "search", "select", "software", "text"};
 
-            easyWord = easyWords[(int) (Math.random() * easyWords.length)];
+            computer = easyWords[(int) (Math.random() * easyWords.length)];
 
-            player1Word = easyWord;
+            player1Word = computer;
 
-        } else if (difficulty.equals("medium")) {
+        } else if (category.equals("2")) {
 
-            numberOfGuesses = 12;
+            numberOfGuesses = 10;
 
-            String[] mediumWords = {"close", "click", "copy", "cut", "command", "database", "delete", "digital", "file", "find", "font", "format", "graphic", "icon", "hardware", "input", "interactive", "Internet", "keyboard", "help", "memory", "menu", "modem", "mouse", "multimedia", "network", "numeric", "open", "output", "paste", "peripheral", "printer", "processing", "replace", "save", "scanner", "search", "select", "software", "text", "advantage", "advertisement", "advice", "agenda", "apology", "authorization", "bill", "brand", "budget", "commission", "comparison", "competition", "competitor", "confirmation", "costs", "creditor", "customer", "deadline", "debt", "debtor", "decision", "decrease", "deficit", "delivery", "department", "description", "difference", "disadvantage", "distribution", "employee", "employer", "enquiry", "environment", "equipment", "estimate", "experience", "explanation", "facilities", "factory", "feedback", "goal", "goods", "growth", "guarantee", "improvement", "increase", "industry", "instructions", "interest", "inventory", "invoice", "knowledge", "limit", "loss", "margin", "market", "message", "mistake", "objective", "offer", "opinion", "option", "order", "output", "payment", "penalty", "permission", "possibility", "product", "production", "profit", "promotion", "purchase", "reduction", "refund", "reminder", "repairs", "report", "responsibility", "result", "retailer", "rise", "risk", "salary", "sales", "schedule", "share", "signature", "stock", "success", "suggestion", "supply", "support", "target", "transport", "turnover", "wholesaler"};
+            String[] mediumWords = {"apple", "banana", "cherry", "grapefruit", "grapes", "lemon", "lime", "melon", "orange", "peach", "pear", "persimmon", "pineapple", "plum", "strawberry", "tangerine", "watermelon", "asparagus", "beans", "broccoli", "cabbage", "carrot", "celery", "corn", "cucumber", "eggplant", "green pepper", "lettuce", "onion", "peas", "potato", "pumpkin", "radish", "spinach", "sweet potato", "tomato", "turnip"};
 
-            mediumWord = mediumWords[(int) (Math.random() * mediumWords.length)];
+            fruitAndVegetables = mediumWords[(int) (Math.random() * mediumWords.length)];
 
-            player1Word = mediumWord;
+            player1Word = fruitAndVegetables;
 
-        } else if (difficulty.equals("hard")) {
+        } else if (category.equals("3")) {
 
-            numberOfGuesses = 9;
+            numberOfGuesses = 10;
 
-            String[] hardWords = {"awkward", "bagpipes", "banjo", "bungler", "croquet", "crypt", "dwarves", "fervid", "fishhook", "fjord", "gazebo", "gypsy", "haiku", "haphazard", "hyphen", "ivory", "jazzy", "jiffy", "jinx", "jukebox", "kayak", "kiosk", "klutz", "labradorite", "memento", "mystify", "numbskull", "ostracize", "oxygen", "pajama", "phlegm", "pixel", "polka", "quad", "quip", "rhythmic", "rogue", "sphinx", "squawk", "swivel", "toady", "twelfth", "unzip", "waxy", "wildebeest", "yacht", "zealous", "zigzag", "zippy", "zombie"};
+            String[] hardWords = {"airplane", "bicycle", "boat", "bus", "car", "helicopter", "horse", "jet", "motorcycle", "ship", "subway", "taxi", "train", "truck", "airport", "apartment", "building", "bank", "church", "hospital", "house", "library", "museum", "restaurant", "school", "mall", "supermarket"};
 
-            hardWord = hardWords[(int) (Math.random() * hardWords.length)];
+            transportationAndPlaces = hardWords[(int) (Math.random() * hardWords.length)];
 
-            player1Word = hardWord;
+            player1Word = transportationAndPlaces;
+
+        } else if (category.equals("4")) {
+
+            numberOfGuesses = 10;
+
+            String[] hardWords = {"accelerator", "battery", "blinker", "brake", "bumper", "clutch", "dashboard", "gear", "headlight", "horn", "hubcap", "seat", "speedometer", "taillight", "tire", "trunk", "turn signal", "wheel", "windshield"};
+
+            carParts = hardWords[(int) (Math.random() * hardWords.length)];
+
+            player1Word = carParts;
+
+        } else if (category.equals("5")) {
+
+            numberOfGuesses = 10;
+
+            String[] hardWords = {"alligator", "ant", "bear", "bee", "bird", "camel", "cat", "cheetah", "chicken", "chimpanzee", "cow", "crocodile", "deer", "dog", "dolphin", "duck", "eagle", "elephant", "fish", "fly", "fox", "frog", "giraffe", "goat", "goldfish", "hamster", "hippopotamus", "horse", "kangaroo", "kitten", "lion", "lobster", "monkey", "octopus", "owl", "panda", "pig", "puppy", "rabbit", "rat", "scorpion", "seal", "shark", "sheep", "snail", "snake", "spider", "squirrel", "tiger", "turtle", "wolf", "zebra"};
+
+            animals = hardWords[(int) (Math.random() * hardWords.length)];
+
+            player1Word = animals;
 
         } else {
 
@@ -124,7 +151,15 @@ public class Hangman {
 
         player2Guess = sc.nextLine().toLowerCase();
 
-        if (player2Guess.matches("[a-z]{1}") || player2Guess.equals(player1Word)) {
+        if (guesses.contains(player2Guess)) {
+
+            System.out.println("You already entered that letter");
+
+            player2Guess();
+
+        } else if (player2Guess.matches("[a-z]{1}") || player2Guess.equals(player1Word) ) {
+
+            guesses.add(player2Guess);
 
             checkPlayer2Guess();
 
@@ -168,9 +203,17 @@ public class Hangman {
 
             }
 
-            convertArrToStr();
+            if (player1WordArr.equals(player2WordArr) && playAgain.equals("n") || numberOfGuesses <= 0 &&  playAgain.equals("n")) {
 
-            player2Guess();
+                endGame();
+
+            } else {
+
+                convertArrToStr();
+
+                player2Guess();
+
+            }
 
         } else if (!player1Word.contains(player2Guess)) {
 
@@ -292,8 +335,19 @@ public class Hangman {
 
     public static void endGame() {
 
-        System.out.println("You lost " + loses + " game(s)");
-        System.out.println("You won " + wins + " game(s)");
+        switch (end) {
+            case 0:
+                System.out.println("You lost " + loses + " game(s)");
+                System.out.println("You won " + wins + " game(s)");
+                break;
+            case 1:
+                break;
+            default:
+                break;
+
+        }
+
+        end += 1;
 
     }
 
