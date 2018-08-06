@@ -6,21 +6,17 @@ public class InputTest {
 
         Input input = new Input();
 
-        System.out.println("Enter a string");
-        System.out.println(input.getString());
+        System.out.println(input.getString("Enter a letter, word or sentence: "));
 
-        System.out.println("Enter yes or no");
         System.out.println(input.yesNo());
 
         System.out.println(input.getInt(0, 10));
 
-        System.out.println("Enter an integer");
-        System.out.println(input.getInt());
+        input.getInt("Enter an integer");
 
         System.out.println(input.getDouble(0, 10));
 
-        System.out.println("Enter a decimal");
-        System.out.println(input.getDouble());
+        input.getDouble("Enter a decimal");
 
     }
 

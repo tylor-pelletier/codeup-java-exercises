@@ -14,9 +14,7 @@ public class CircleApp {
 
         Input input = new Input();
 
-        System.out.print("Enter the radius of a circle: ");
-
-        double radius = input.getDouble();
+        double radius = input.getDouble("Enter the radius of a circle: ");
 
         Circle r = new Circle(radius);
 
