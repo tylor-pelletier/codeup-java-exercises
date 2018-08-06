@@ -54,9 +54,21 @@ public class Input {
 
     }
 
-    public int getInt() {
+    public int getInt(String prompt) {
 
-        return sc.nextInt();
+        System.out.println(prompt);
+        String input = sc.nextLine();
+
+        try {
+
+            return Integer.valueOf(input);
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Input was not a valid number, try again");
+            return getInt(prompt);
+
+        }
 
     }
 
@@ -79,9 +91,21 @@ public class Input {
 
     }
 
-    public double getDouble() {
+    public double getDouble(String prompt) {
 
-        return sc.nextDouble();
+        System.out.println(prompt);
+        String input = sc.next();
+
+        try {
+
+            return Double.valueOf(input);
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Input was not a decimal number, try again");
+            return getDouble(prompt);
+
+        }
 
     }
 
