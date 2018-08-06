@@ -6,10 +6,8 @@ public class InputTest {
 
         Input input = new Input();
 
-        System.out.println("Enter a string");
-        System.out.println(input.getString());
+        System.out.println(input.getString("Enter a letter, word or sentence: "));
 
-        System.out.println("Enter yes or no");
         System.out.println(input.yesNo());
 
         System.out.println(input.getInt(0, 10));

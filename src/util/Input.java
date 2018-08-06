@@ -6,15 +6,16 @@ public class Input {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public String getString() {
+    public String getString(String prompt) {
 
+        System.out.print(prompt);
         return sc.nextLine();
 
     }
 
     public boolean yesNo() {
 
-        System.out.println("[yes/no]");
+        System.out.print("Enter yes or no: ");
 
         String input = sc.next();
 
@@ -37,7 +38,7 @@ public class Input {
 
     public int getInt(int min, int max) {
 
-        System.out.println("Enter a number between " + min + " and " + max);
+        System.out.print("Enter a number between " + min + " and " + max + ": ");
 
         int input = sc.nextInt();
 
@@ -47,7 +48,7 @@ public class Input {
 
         } else {
 
-            System.out.println("Invalid input, try again");
+            System.out.println("Input was not a number between " + min + " and " + max + ", try again");
             return getInt(min, max);
 
         }
@@ -74,7 +75,7 @@ public class Input {
 
     public double getDouble(double min, double max) {
 
-        System.out.println("Enter a decimal between " + min + " and " + max);
+        System.out.print("Enter a decimal between " + min + " and " + max + ": ");
 
         double input = sc.nextDouble();
 
@@ -84,7 +85,7 @@ public class Input {
 
         } else {
 
-            System.out.println("Invalid input, try again");
+            System.out.println("Input was not a decimal number between " + min + " and " + max + ", try again");
             return getDouble(min, max);
 
         }
