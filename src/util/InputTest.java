@@ -12,11 +12,11 @@ public class InputTest {
 
         System.out.println(input.getInt(0, 10));
 
-        input.getInt("Enter an integer");
+        System.out.println(input.getInt());
 
         System.out.println(input.getDouble(0, 10));
 
-        input.getDouble("Enter a decimal");
+        System.out.println(input.getDouble());
 
     }
 

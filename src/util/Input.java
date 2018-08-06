@@ -8,14 +8,14 @@ public class Input {
 
     public String getString(String prompt) {
 
-        System.out.print(prompt);
+        System.out.println(prompt);
         return sc.nextLine();
 
     }
 
     public boolean yesNo() {
 
-        System.out.print("Enter yes or no: ");
+        System.out.println("Enter yes or no: ");
 
         String input = sc.next();
 
@@ -38,7 +38,7 @@ public class Input {
 
     public int getInt(int min, int max) {
 
-        System.out.print("Enter a number between " + min + " and " + max + ": ");
+        System.out.println("Enter a number between " + min + " and " + max + ": ");
 
         int input = sc.nextInt();
 
@@ -55,27 +55,29 @@ public class Input {
 
     }
 
-    public int getInt(String prompt) {
+    public int getInt() {
 
-        System.out.println(prompt);
-        String input = sc.nextLine();
+        String input = this.getString("Enter a number: ");
+        int number = 0;
 
         try {
 
-            return Integer.valueOf(input);
+            number = Integer.valueOf(input);
 
         } catch (NumberFormatException e) {
 
             System.out.println("Input was not a valid number, try again");
-            return getInt(prompt);
+            number = getInt();
 
         }
+
+        return number;
 
     }
 
     public double getDouble(double min, double max) {
 
-        System.out.print("Enter a decimal between " + min + " and " + max + ": ");
+        System.out.println("Enter a decimal between " + min + " and " + max + ": ");
 
         double input = sc.nextDouble();
 
@@ -92,21 +94,23 @@ public class Input {
 
     }
 
-    public double getDouble(String prompt) {
+    public double getDouble() {
 
-        System.out.println(prompt);
-        String input = sc.next();
+        String input = this.getString("Enter a decimal number: ");
+        double decimalNumber = 0;
 
         try {
 
-            return Double.valueOf(input);
+            decimalNumber = Double.valueOf(input);
 
         } catch (NumberFormatException e) {
 
             System.out.println("Input was not a decimal number, try again");
-            return getDouble(prompt);
+            decimalNumber = getDouble();
 
         }
+
+        return decimalNumber;
 
     }
 
