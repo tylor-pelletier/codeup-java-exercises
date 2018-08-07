@@ -114,4 +114,24 @@ public class Input {
 
     }
 
+    public int getBinary() {
+
+        String input = this.getString("Enter a binary number");
+        int number = 0;
+
+        try {
+
+            number = Integer.valueOf(input, 2);
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Input was not a number, try again");
+            number = getBinary();
+
+        }
+
+        return number;
+
+    }
+
 }

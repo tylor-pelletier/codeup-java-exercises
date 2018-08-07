@@ -18,6 +18,8 @@ public class InputTest {
 
         System.out.println(input.getDouble());
 
+        System.out.println(input.getBinary());
+
     }
 
 }
