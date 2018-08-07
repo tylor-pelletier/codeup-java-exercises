@@ -1,5 +1,5 @@
 locations
 managers
-workers
+effectiveness
 production
 costs

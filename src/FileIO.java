@@ -72,7 +72,27 @@ public class FileIO {
         }
 
         // replace one string with a different string
+        List<String> topics = null;
+        try {
+            topics = Files.readAllLines(reportsFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<String> newReport = new ArrayList<>();
 
+        for (String topic : topics) {
+            if (topic.equals("workers")) {
+                newReport.add("effectiveness");
+                continue;
+            }
+            newReport.add(topic);
+        }
+
+        try {
+            Files.write(reportsFile, newReport);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
