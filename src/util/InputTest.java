@@ -20,6 +20,8 @@ public class InputTest {
 
         System.out.println(input.getBinary());
 
+        System.out.println(input.getHex());
+
     }
 
 }

@@ -116,7 +116,7 @@ public class Input {
 
     public int getBinary() {
 
-        String input = this.getString("Enter a binary number");
+        String input = this.getString("Enter a binary number: ");
         int number = 0;
 
         try {
@@ -127,6 +127,26 @@ public class Input {
 
             System.out.println("Input was not a number, try again");
             number = getBinary();
+
+        }
+
+        return number;
+
+    }
+
+    public int getHex() {
+
+        String input = this.getString("Enter a hex number: ");
+        int number = 0;
+
+        try {
+
+            number = Integer.valueOf(input, 16);
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Input was not a number, try again");
+            number = getHex();
 
         }
 
