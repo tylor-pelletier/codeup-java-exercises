@@ -5,30 +5,30 @@ public class Hangman {
 
     static Scanner sc = new Scanner(System.in);
 
-    private String category;
-    private String computer;
-    private String fruitAndVegetables;
-    private String transportationAndPlaces;
-    private String carParts;
-    private String animals;
-    private String player1Word;
-    private String player2Guess;
-    private int numberOfGuesses;
-    private ArrayList<String> player2WordArr = new ArrayList<String>();
-    private ArrayList<String> player1WordArr = new ArrayList<String>();
-    private ArrayList<String> guesses = new ArrayList<>();
-    private String playAgain;
-    private int wins;
-    private int loses;
-    private int end = 0;
+    private static String category;
+    private static String computer;
+    private static String fruitAndVegetables;
+    private static String transportationAndPlaces;
+    private static String carParts;
+    private static String animals;
+    private static String player1Word;
+    private static String player2Guess;
+    private static int numberOfGuesses;
+    private static ArrayList<String> player2WordArr = new ArrayList<String>();
+    private static ArrayList<String> player1WordArr = new ArrayList<String>();
+    private static ArrayList<String> guesses = new ArrayList<>();
+    private static String playAgain;
+    private static int wins;
+    private static int loses;
+    private static int end = 0;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
 
         startGame();
 
     }
 
-    public void startGame() {
+    public static void startGame() {
 
         selectDifficulty();
 
@@ -66,7 +66,7 @@ public class Hangman {
 
     }
 
-    public void selectDifficulty() {
+    public static void selectDifficulty() {
 
         System.out.println("--------- Hangman ----------");
         System.out.println("1 - Computer");
@@ -81,7 +81,7 @@ public class Hangman {
 
     }
 
-    public void difficultyOptions() {
+    public static void difficultyOptions() {
 
         category = sc.next().toLowerCase();
 
@@ -145,7 +145,7 @@ public class Hangman {
 
     }
 
-    public void player2Guess() {
+    public static void player2Guess() {
 
         player2Guess = sc.nextLine().toLowerCase();
 
@@ -171,7 +171,7 @@ public class Hangman {
 
     }
 
-    public void checkPlayer2Guess() {
+    public static void checkPlayer2Guess() {
 
         if (player2Guess.equals(player1Word) || player1WordArr.equals(player2WordArr)) {
 
@@ -225,7 +225,7 @@ public class Hangman {
 
     }
 
-    public void minusAGuess() {
+    public static void minusAGuess() {
 
         numberOfGuesses -= 1;
 
@@ -289,7 +289,7 @@ public class Hangman {
 
     }
 
-    public void askToPlayAgain() {
+    public static void askToPlayAgain() {
 
         System.out.print("Do you want to play again? [y/n]: ");
 
@@ -313,7 +313,7 @@ public class Hangman {
 
     }
 
-    public void convertArrToStr() {
+    public static void convertArrToStr() {
 
         for (String p2WordArr : player2WordArr) {
 
@@ -331,7 +331,7 @@ public class Hangman {
 
     }
 
-    public void endGame() {
+    public static void endGame() {
 
         switch (end) {
             case 0:
@@ -349,7 +349,7 @@ public class Hangman {
 
     }
 
-    public void hangman0() {
+    public static void hangman0() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -365,7 +365,7 @@ public class Hangman {
 
     }
 
-    public void hangman1() {
+    public static void hangman1() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -381,7 +381,7 @@ public class Hangman {
 
     }
 
-    public void hangman2() {
+    public static void hangman2() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -397,7 +397,7 @@ public class Hangman {
 
     }
 
-    public void hangman3() {
+    public static void hangman3() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -413,7 +413,7 @@ public class Hangman {
 
     }
 
-    public void hangman4() {
+    public static void hangman4() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -429,7 +429,7 @@ public class Hangman {
 
     }
 
-    public void hangman5() {
+    public static void hangman5() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -445,7 +445,7 @@ public class Hangman {
 
     }
 
-    public void hangman6() {
+    public static void hangman6() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==       !     ");
@@ -461,7 +461,7 @@ public class Hangman {
 
     }
 
-    public void hangman7() {
+    public static void hangman7() {
 
         System.out.println("  ==========     ");
         System.out.println("  ==             ");
@@ -477,7 +477,7 @@ public class Hangman {
 
     }
 
-    public void hangman8() {
+    public static void hangman8() {
 
         System.out.println("  ==             ");
         System.out.println("  ==             ");
@@ -493,7 +493,7 @@ public class Hangman {
 
     }
 
-    public void hangman9() {
+    public static void hangman9() {
 
         System.out.println("                 ");
         System.out.println("                 ");
